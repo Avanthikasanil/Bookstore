@@ -1,0 +1,95 @@
+.icons{
+    width: 10px;
+    height: 10px;
+}
+.book-card {
+  width: 20rem;
+  margin: 1rem;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  padding: 8px; 
+}
+
+.book-card:hover {
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.book-image {
+  height: 19rem;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.book-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #111827;
+  margin-bottom: 5px;
+}
+
+.book-description {
+  font-size: 0.9rem;
+  color: #4b5563;
+  height: 2.7em; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  margin-bottom: 5px;
+}
+
+.book-author,
+.book-price {
+  font-size: 1rem;
+  margin-bottom: 5px; 
+  font-weight: 600;
+}
+
+.book-price {
+  font-weight: bold;
+  color: #08845a;
+  font-size: 1.2rem; 
+}
+.book-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Desktop - 4 columns */
+  gap: 20px;
+}
+
+/* Mini-tab (<= 992px) → 2 columns */
+@media (max-width: 992px) {
+  .book-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile (<= 576px) → 1 column */
+@media (max-width: 576px) {
+  .book-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.book-column {
+  display: flex;
+  justify-content: center;
+}
+
+.book-card {
+  width: 100%;
+  max-width: 20rem; /* prevent stretching too big */
+}

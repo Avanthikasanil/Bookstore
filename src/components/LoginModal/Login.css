@@ -1,0 +1,18 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.login-form input {
+  padding: 10px;
+  font-size: 16px;
+}
+.reg button{
+  border: none;
+  background-color: white;
+  color: red;
+}
+
+
+

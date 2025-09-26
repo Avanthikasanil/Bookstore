@@ -1,0 +1,206 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/*********************** ABOUT-US ********************/
+.about-us {
+  width: 100%;
+  margin-top: 10pc;
+  margin-bottom: 50px;
+}
+.about-head {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  color: black;
+  font-size: 20px;
+}
+.about-img2 {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  padding: 40px;
+}
+.about-img2 img {
+  width: 35%;
+  padding: 10px;
+  height: 30rem;
+}
+.about-para {
+  background-color: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  font-family: 'Inter', sans-serif;
+  text-align: left;
+  font-size: 18px;
+  line-height: 28px;
+  max-width: fit-content;
+  width: 100%;
+  height: fit-content;
+}
+.about-but {
+  margin-top: 20px;
+  background-color: #EE0000; 
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+  width: 30%;
+  height: 30px;
+}
+.about-but:hover {
+  background-color: #c11616;
+}
+
+
+/**************************** SERVICES ***************************/
+.service {
+  padding: 40px 20px;
+  background-color: rgb(144, 206, 147);
+  text-align: center;
+}
+.service h1 {
+  font-size: 40px;
+  margin-bottom: 30px;
+  color: white;
+}
+.all-service {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.ser-1 {
+  width: 220px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  text-align: center;
+}
+.all-service img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+.all-service p {
+  font-size: 15px;
+  font-weight: 500;
+  color: #444;
+}
+
+
+/******************************* CONTACT-US *********************************/
+.contact-us {
+  padding: 40px 20px;
+  background-color: #f1f1f1;
+  text-align: center;
+}
+.contact-us h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+.contact-us p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+.contact-details {
+  margin-top: 30px;
+  padding: 30px;
+}
+.contact-details p {
+  margin: 5px 0;
+  text-align: left;
+}
+.contact {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.form {
+  background-color: rgb(215, 244, 216);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  height: 400px;
+  width: 550px;
+}
+.contact-form {
+  max-width: 500px;
+  margin: 20px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+}
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+.contact-form button {
+  background-color: #EE0000;
+  color: white;
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  width: 30%;
+}
+.map {
+  margin-bottom: 50px;
+}
+
+
+/*********************** MOBILE VIEW **********************/
+@media (max-width: 576px) {
+  /* About Us */
+  .about-img2 {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+  }
+  .about-img2 img {
+    width: 70%;
+    padding: 10px;
+  }
+  .about-para {
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+  }
+  .about-but {
+    width: 70%;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  /* Services */
+  .all-service {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+  .ser-1 {
+    width: 90%;
+  }
+
+  /* Contact Us */
+  .contact {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .form {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+  }
+  .contact-form button {
+    width: 100%;
+  }
+  .contact-details {
+    text-align: center;
+  }
+}
