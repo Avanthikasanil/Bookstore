@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../../../Utils/baseUrl";
 import BuyerNavbar from "../BuyerNavBar/BuyerNav";
 import BuyerFooter from "../BuyerFooter/BuyerFot";
 import Card from "react-bootstrap/Card";
@@ -12,7 +12,7 @@ function WishlistPage() {
     const fetchWishlist = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:4000/buyers/wishlist", {
+        const res = await axios.get("/buyers/wishlist", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setWishlist(res.data.books || []); // safe fallback
@@ -26,7 +26,7 @@ function WishlistPage() {
   const removeFromWishlist = async (bookId) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:4000/buyers/wishlist/${bookId}`, {
+      await axios.delete(`/buyers/wishlist/${bookId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setWishlist((prev) => prev.filter((book) => book._id !== bookId));
@@ -43,14 +43,14 @@ function WishlistPage() {
 
     // ✅ Pass bookId in the URL, not body
     await axios.post(
-      `http://localhost:4000/buyers/cart/${bookId}`,
+      `/buyers/cart/${bookId}`,
       {},
       { headers: { Authorization: `Bearer ${token}` } }
     );
 
     // Remove from wishlist
     await axios.delete(
-      `http://localhost:4000/buyers/wishlist/${bookId}`,
+      `/buyers/wishlist/${bookId}`,
       { headers: { Authorization: `Bearer ${token}` } }
     );
 

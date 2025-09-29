@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../../Utils/baseUrl.js";
 import SelNavbar from "../SellerNavbar/SelNavbar";
 import SelFooter from "../SellerFooter/SelFooter";
 import SellerCard from "./SelproCard";
@@ -20,7 +20,7 @@ function SellerProduct() {
         const token = localStorage.getItem("token");
         if (!token) return;
 
-        const res = await axios.get("http://localhost:4000/books/mybooks", {
+        const res = await axios.get("/books/mybooks", {
           headers: { Authorization: `Bearer ${token}`, "Cache-Control": "no-cache" },
         });
 
@@ -36,7 +36,7 @@ function SellerProduct() {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:4000/sellers/${id}`, {
+      await axios.delete(`/sellers/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProducts(products.filter((book) => book._id !== id));

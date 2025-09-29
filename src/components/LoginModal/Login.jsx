@@ -1,122 +1,9 @@
-// import React, { useState } from "react";
-// import { Modal, Button, Form } from "react-bootstrap";
-// import axios from "axios";
-// import { useNavigate } from "react-router-dom";
-// import "./Login.css";
-// import { loginSchema } from "../Validation/bookValidation.js";
-// import { parse } from "valibot";  // ✅ use parse instead of validate
-
-// function LoginModal({ show, onHide }) {
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const navigate = useNavigate();
-
-//   const handleLogin = async (e) => {
-//     e.preventDefault();
-
-//     // ✅ Validation with valibot
-//     try {
-//       parse(loginSchema, { email, password });
-//     } catch (err) {
-//       alert(err.issues?.[0]?.message || "Invalid input");
-//       return; // stop login if validation fails
-//     }
-
-//     try {
-//       const res = await axios.post("http://localhost:4000/login", {
-//         email,
-//         password,
-//       });
-
-//       console.log("Login response:", res.data);
-//       if (res.status === 200) {
-//         alert("Login successful!");
-
-//         // Save details in localStorage
-//         localStorage.setItem("token", res.data.token);
-//         localStorage.setItem("userId", res.data.userId);
-//         localStorage.setItem("role", res.data.role);
-//         localStorage.setItem("user", JSON.stringify(res.data.user));
-
-//         // Close the modal
-//         onHide();
-
-//         // ✅ Redirect based on role
-//         if (res.data.role === "buyer") {
-//           navigate("/buyer");
-//         } else if (res.data.role === "seller") {
-//           navigate("/seller");
-//         } else {
-//           navigate("/");
-//         }
-//       }
-//     } catch (error) {
-//       console.error("Login failed:", error);
-//       alert(error.response?.data?.message || "Login failed, please try again.");
-//     }
-//   };
-
-//   const handleGoToRegister = () => {
-//     onHide(); // close modal
-//     navigate("/register"); // redirect to register page
-//   };
-
-//   return (
-//     <Modal show={show} onHide={onHide} centered>
-//       <Modal.Header closeButton>
-//         <Modal.Title>Login</Modal.Title>
-//       </Modal.Header>
-//       <Modal.Body>
-//         <Form onSubmit={handleLogin}>
-//           <Form.Group>
-//             <Form.Label>Email</Form.Label>
-//             <Form.Control
-//               type="email"
-//               placeholder="Enter email"
-//               value={email}
-//               onChange={(e) => setEmail(e.target.value)}
-//               required
-//             />
-//           </Form.Group>
-
-//           <Form.Group className="mt-3">
-//             <Form.Label>Password</Form.Label>
-//             <Form.Control
-//               type="password"
-//               placeholder="Enter password"
-//               value={password}
-//               onChange={(e) => setPassword(e.target.value)}
-//               required
-//             />
-//           </Form.Group>
-
-//           <div className="reg mt-3">
-//             <p>
-//               Don't have an account?{" "}
-//               <Button variant="link" onClick={handleGoToRegister}>
-//                 Register
-//               </Button>
-//             </p>
-//           </div>
-
-//           <Button type="submit" className="mt-2 w-100">
-//             Login
-//           </Button>
-//         </Form>
-//       </Modal.Body>
-//     </Modal>
-//   );
-// }
-
-// export default LoginModal;
-
-
 import React from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+import axios from "../../Utils/baseUrl";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Login.css";
@@ -135,7 +22,7 @@ function LoginModal({ show, onHide }) {
     }),
     onSubmit: async (values, { resetForm }) => {
       try {
-        const res = await axios.post("http://localhost:4000/login", values);
+        const res = await axios.post("/login", values);
 
         toast.success("Login successful!");
         resetForm();

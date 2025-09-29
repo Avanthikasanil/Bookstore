@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../../../Utils/baseUrl";
 import BuyerNavbar from "../BuyerNavBar/BuyerNav";
 import BuyerFooter from "../BuyerFooter/BuyerFot";
 import Card from "react-bootstrap/Card";
@@ -13,7 +13,7 @@ function CartPage() {
     const fetchCart = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:4000/buyers/cart", {
+        const res = await axios.get("/buyers/cart", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -34,7 +34,7 @@ function CartPage() {
   const removeFromCart = async (bookId) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:4000/buyers/cart/${bookId}`, {
+      await axios.delete(`/buyers/cart/${bookId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCart(cart.filter((item) => item.bookID._id !== bookId));
@@ -49,13 +49,13 @@ function CartPage() {
 
     // 1. Add book to wishlist
     await axios.post(
-      `http://localhost:4000/buyers/wishlist/${bookId}`,
+      `/buyers/wishlist/${bookId}`,
       {},
       { headers: { Authorization: `Bearer ${token}` } }
     );
 
     // 2. Remove book from cart
-    await axios.delete(`http://localhost:4000/buyers/cart/${bookId}`, {
+    await axios.delete(`/buyers/cart/${bookId}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 

@@ -1,6 +1,6 @@
 
 import React, { useEffect } from "react";
-import axios from "axios";
+import axios from "../../../Utils/baseUrl";
 import "./EditDrawer.css";
 import { toast } from "react-toastify";
 import { useFormik } from "formik";
@@ -31,7 +31,7 @@ function EditDrawer({ open, onClose, product, setProducts }) {
         if (!token) return toast.error("Please login first");
 
         const res = await axios.put(
-          `http://localhost:4000/sellers/${product._id}`,
+          `/sellers/${product._id}`,
           values,
           { headers: { Authorization: `Bearer ${token}` } }
         );

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axios from '../../../Utils/baseUrl';
 import BuyerNavbar from "../BuyerNavBar/BuyerNav";
 import BuyerFooter from "../BuyerFooter/BuyerFot";
 import BuyerCard from "./BuyProductCard";
@@ -14,7 +14,7 @@ function ProductPage() {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/buyers/getAllBooks");
+        const res = await axios.get("/buyers/getAllBooks");
         setBooks(res.data);
       } catch (error) {
         console.error("❌ Error fetching books:", error);

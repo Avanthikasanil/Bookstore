@@ -2,7 +2,7 @@ import React from "react";
 import "./BuyProduct.css";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import axios from "axios";
+import axios from "../../../Utils/baseUrl";
 import cart from "./images/cartphot-removebg-preview.png";
 import heart from "./images/heartphoto.png";
 import { toast, ToastContainer } from "react-toastify";
@@ -18,7 +18,7 @@ function BookCard({ id, image, title, author, price, description }) {
       }
 
       await axios.post(
-        `http://localhost:4000/buyers/cart/${id}`,
+        `/buyers/cart/${id}`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -41,7 +41,7 @@ function BookCard({ id, image, title, author, price, description }) {
       }
 
       await axios.post(
-        `http://localhost:4000/buyers/wishlist/${id}`,
+        `/buyers/wishlist/${id}`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },

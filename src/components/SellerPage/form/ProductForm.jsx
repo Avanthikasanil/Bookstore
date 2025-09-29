@@ -1,129 +1,9 @@
-// import React, { useState } from "react";
-// import { Form, Button } from "react-bootstrap";
-// import axios from "axios";
 
-// function ProductForm({ modalStatus, setShowModal, products, setProducts }) {
-//   const [formData, setFormData] = useState({
-//     title: "",
-//     author: "",
-//     price: "",
-//     description: "",
-//     image: null, // ✅ file object, not string
-//   });
-
-//   const handleChange = (e) => {
-//     setFormData({ ...formData, [e.target.name]: e.target.value });
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       const token = localStorage.getItem("token");
-
-//       const data = new FormData();
-//       data.append("title", formData.title);
-//       data.append("author", formData.author);
-//       data.append("price", formData.price);
-//       data.append("description", formData.description);
-//       if (formData.image) {
-//         data.append("image", formData.image); // ✅ MUST be "image"
-//       }
-
-//       const res = await axios.post("http://localhost:4000/books/add", data, {
-//         headers: {
-//           Authorization: `Bearer ${token}`,
-//           "Content-Type": "multipart/form-data",
-//         },
-//       });
-
-//       // add the saved book to list
-//       setProducts((prev) => [...prev, res.data.book]);
-
-//       // reset form + close modal
-//       setFormData({
-//         title: "",
-//         author: "",
-//         price: "",
-//         description: "",
-//         image: null,
-//       });
-//       setShowModal(false);
-//     } catch (err) {
-//       console.error("Failed to add book:", err.response?.data || err.message);
-//       alert(err.response?.data?.message || "Failed to add book");
-//     }
-//   };
-
-//   return (
-//     <Form onSubmit={handleSubmit}>
-//       <Form.Group className="mb-3">
-//         <Form.Label>Title</Form.Label>
-//         <Form.Control
-//           type="text"
-//           name="title"
-//           value={formData.title}
-//           onChange={handleChange}
-//           required
-//         />
-//       </Form.Group>
-
-//       <Form.Group className="mb-3">
-//         <Form.Label>Author</Form.Label>
-//         <Form.Control
-//           type="text"
-//           name="author"
-//           value={formData.author}
-//           onChange={handleChange}
-//         />
-//       </Form.Group>
-
-//       <Form.Group className="mb-3">
-//         <Form.Label>Price</Form.Label>
-//         <Form.Control
-//           type="number"
-//           name="price"
-//           value={formData.price}
-//           onChange={handleChange}
-//         />
-//       </Form.Group>
-
-//       <Form.Group className="mb-3">
-//         <Form.Label>Description</Form.Label>
-//         <Form.Control
-//           as="textarea"
-//           rows={3}
-//           name="description"
-//           value={formData.description}
-//           onChange={handleChange}
-//         />
-//       </Form.Group>
-
-//         <Form.Group className="mb-3">
-//     <Form.Label>Book Cover</Form.Label>
-//     <Form.Control
-//       type="file"
-//       name="image"   // must match backend
-//       accept="image/*"
-//       onChange={(e) =>
-//         setFormData({ ...formData, image: e.target.files[0] })
-//       }
-//     />
-//   </Form.Group>
-
-//       <Button type="submit" variant="primary">Add Book</Button>
-//     </Form>
-//   );
-// }
-
-// export default ProductForm;
-
-
-// ProductForm.jsx
 import React from "react";
 import { Button } from "react-bootstrap";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+import axios from "../../../Utils/baseUrl";
 import { toast } from "react-toastify";
 
 function ProductForm({ modalStatus, setShowModal, products, setProducts }) {
@@ -155,7 +35,7 @@ function ProductForm({ modalStatus, setShowModal, products, setProducts }) {
         data.append("description", values.description);
         data.append("image", values.image);
 
-        const res = await axios.post("http://localhost:4000/books/add", data, {
+        const res = await axios.post("/books/add", data, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data",
