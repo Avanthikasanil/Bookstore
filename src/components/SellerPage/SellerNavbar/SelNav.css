@@ -1,0 +1,97 @@
+/* Seller Navbar Base */
+.seller-navbar {
+  width: 100%;
+  background-color: rgb(144, 206, 147);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* position: fixed; */
+  top: 0;
+  z-index: 1000;
+  padding: 10px 20px;
+}
+
+.seller-logo img {
+  width: 100px;
+  height: 100px;
+}
+
+/* Nav links */
+.seller-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  font-size: 20px;
+}
+
+.seller-nav-right a {
+  text-decoration: none;
+  color: white;
+}
+
+/* Profile + Logout */
+.seller-nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.seller-logout-btn {
+  background-color: #ee0000;
+  border: none;
+  border-radius: 3px;
+  height: 35px;
+  width: 100px;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.seller-profile {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Hamburger */
+.seller-hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
+  margin-left: 15px;
+}
+
+.seller-hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 5px;
+}
+
+
+
+
+/* Mobile */
+@media (max-width: 768px) {
+  .seller-nav-right {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: rgb(144, 206, 147);
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .seller-nav-right.active {
+    display: flex;
+  }
+
+  .seller-hamburger {
+    display: flex;
+  }
+}

@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+.navebar {
+  width: 100%;
+  background-color: rgb(144, 206, 147);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo-img img {
+  width: 80px;
+  height: 80px;
+}
+
+/* Menu */
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  font-size: 20px;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+
+/* Buttons */
+.nav-button {
+  display: flex;
+  gap: 10px;
+  margin-left: 30px;
+}
+
+.nav-button button {
+  background-color: #EE0000;
+  border: none;
+  border-radius: 5px;
+  height: 30px;
+  width: 80px;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.nav-button button:hover {
+  background-color: #bb0000;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  margin-left: 50px;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background: white;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+/* Hamburger animation */
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+/************************************************** media Query *************************************************************/
+/* ************************** PHONE *************************** */
+@media (max-width: 768px) {
+  .nav-list {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: rgb(144, 206, 147);
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    padding: 20px 0;
+    display: none;
+  }
+
+  .nav-list.active {
+    display: flex;
+  }
+  .hamburger {
+    display: flex;
+  }
+}
